@@ -6,8 +6,9 @@ import javax.swing.JOptionPane;
 public class NIFService {
 
     int resto = 0;
-    String letra;
+    char letra;
     char opcion;
+
     public void crearNif(NIF nif) {
 
         nif.setDNI(Long.parseLong(JOptionPane.showInputDialog("Ingrese el DNI de la persona:")));
@@ -16,85 +17,24 @@ public class NIFService {
     }
 
     public NIF calcularLetra(NIF nif) {
-        opcion = (char) resto;
-        switch (opcion) {
-            case 0:
-                nif.setLetra('T');
-                break;
-            case 1:
-                 nif.setLetra('R');
-                break;
-            case 2:
-                 nif.setLetra('W');
-                break;
-            case 3:
-                 nif.setLetra('A');
-                break;
-            case 4:
-                 nif.setLetra('G');
-                break;
-            case 5:
-                 nif.setLetra('M');
-                break;
-            case 6:
-                 nif.setLetra('Y');
-                break;
-            case 7:
-                 nif.setLetra('F');
-                break;
-            case 8:
-                 nif.setLetra('P');
-                break;
-            case 9:
-                 nif.setLetra('D');
-                break;
-            case 10:
-                 nif.setLetra('X');
-                break;
-            case 11:
-                 nif.setLetra('B');
-                break;
-            case 12:
-                 nif.setLetra('N');
-                break;
-            case 13:
-                nif.setLetra('J');
-                break;
-            case 14:
-                 nif.setLetra('Z');
-                break;
-            case 15:
-                 nif.setLetra('S');
-                break;
-            case 16:
-                 nif.setLetra('Q');
-                break;
-            case 17:
-                 nif.setLetra('V');
-                break;
-            case 18:
-                 nif.setLetra('H');
-                break;
-            case 19:
-                 nif.setLetra('L');
-                break;
-            case 20:
-                 nif.setLetra('C');
-                break;
-            case 21:
-                nif.setLetra('K');
-                break;
-            case 22:
-                 nif.setLetra('E');
-                break;
+
+        char[] letras = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+
+        for (int i = 0; i < 22; i++) {
+            letras[i] = letras[resto];
+            letra = letras[resto];
+
         }
-       
+
+        nif.setLetra(letra);
+
         return nif;
     }
 
     public void mostrar(NIF nif) {
-       JOptionPane.showMessageDialog(null,"El NIF de la persona es: " + nif.getDNI() +" - " + nif.getLetra());
-        
+        JOptionPane.showMessageDialog(null, "El resto es : " + resto + " y la letra es : " + letra);
+        JOptionPane.showMessageDialog(null, "El NIF de la persona es: " + nif.getDNI() + " - " + nif.getLetra());
+
     }
 
 }
